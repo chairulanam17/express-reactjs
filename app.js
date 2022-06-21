@@ -19,8 +19,8 @@ const server = http.createServer((req, res) => {
   if (req.method === "POST") {
     let body = "";
     req.on("end", () => {
-      console.log(body);
-      res.end("<h1>Got POST request.</h1>");
+      const userName = body.split("=")[1];
+      res.end("<h1>" + userName + "</h1>");
     });
 
     req.on("data", (chunk) => {
